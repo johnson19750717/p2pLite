@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to our OCR demo!</title>
+    <link href="lib/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/bootstrap-theme-cerulean.min.css" rel="stylesheet">
+    <link href="resources/css/demo.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="lib/html5shiv.min.js"></script>
+    <script src="lib/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#recognition-front" data-toggle="tab">Recognition(front)</a></li>
+        <li><a href="#recognition-back" data-toggle="tab">Recognition(back)</a></li>
+        <li><a href="#history-front" data-toggle="tab">History(front)</a></li>
+        <li><a href="#history-back" data-toggle="tab">History(back)</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="recognition-front">
+            <row><img src="" class="img-responsive" alt="Responsive image"></row>
+            <table class="table table-hover table-condensed">
+                <tr>
+                    <td style="width:30%">NAME</td>
+                    <td>SOMEBODY</td>
+                </tr>
+                <tr>
+                    <td>ID CARD NO.</td>
+                    <td>324567890987654321</td>
+                </tr>
+            </table>
+            <label for="recognize-front"><a class="btn btn-primary btn-lg btn-block">Recognize</a></label>
+            <input type="file" accept="image/jpg, image/jpeg" capture="camera" id="recognize-front" >
+        </div>
+        <div class="tab-pane fade" id="recognition-back">
+            <row><img src="" class="img-responsive" alt="Responsive image"></row>
+            <table class="table table-hover table-condensed">
+                <tr>
+                    <td style="width:30%">VALID THROUGH</td>
+                    <td>2022.2.22</td>
+                </tr>
+                <tr>
+                    <td>RELEASED BY</td>
+                    <td>SOME CITY</td>
+                </tr>
+            </table>
+            <label for="recognize-back"><a class="btn btn-primary btn-lg btn-block">Recognize</a></label>
+            <input type="file" accept="image/jpg, image/jpeg" capture="camera" id="recognize-back" >
+        </div>
+        <div class="tab-pane fade" id="history-front">
+            <table class="table table-striped">
+                <tr>
+                    <td><a>uuuuuuuurl</a></td>
+                    <td>NAME</td>
+                    <td>ID CARD NO.</td>
+                    <td>RECOGNIZED AT</td>
+                </tr>
+                <tr>
+                    <td><a>http://someurl.jpg</a></td>
+                    <td>Somebody Name</td>
+                    <td>432123456789098765</td>
+                    <td>2014/10/4 22:00</td>
+                </tr>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="history-back">
+            <table class="table table-striped">
+                <tr>
+                    <td><a>uuuuuuuurl</a></td>
+                    <td>NAME</td>
+                    <td>ID CARD NO.</td>
+                    <td>RECOGNIZED AT</td>
+                </tr>
+                <tr>
+                    <td><a>http://someurl.jpg</a></td>
+                    <td>Somebody Name</td>
+                    <td>432123456789098765</td>
+                    <td>2014/10/4 22:00</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="lib/jquery-2.1.1-dist/jquery-2.1.1.min.js"></script>
+<script src="lib/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+<script src="resources/js/demo.js"></script>
+</body>
+</html>

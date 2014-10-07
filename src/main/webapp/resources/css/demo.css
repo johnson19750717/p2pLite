@@ -1,0 +1,15 @@
+.container{
+    padding-top: 2%;
+}
+.tab-content{
+    margin-top: 1%;
+}
+label{
+    display: block;
+}
+#recognize-front, #recognize-back{
+    display:none;
+}
+.table{
+    margin-top: 1%;
+}
