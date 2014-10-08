@@ -30,3 +30,10 @@ label{
     border-right: 8px solid transparent;
     border-top: 8px solid #2fa4e7;
 }
+#loading img{
+    margin: auto;
+    vertical-align: middle;
+}
+#img-in-box{
+    margin: auto;
+}
