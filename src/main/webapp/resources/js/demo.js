@@ -19,7 +19,6 @@
             recognizeIdCard: function(file, frontOrBack, callback, errorHandler) {
                 var formData = new FormData();
                 formData.append("file", file);
-                frontOrBack = frontOrBack.charAt(0).toUpperCase() + frontOrBack.substr(1).toLowerCase();
                 $.ajax({
                     url: demo.config.apiPath + '/idcard/' + frontOrBack,
                     type: 'POST',
