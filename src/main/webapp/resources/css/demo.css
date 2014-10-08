@@ -2,7 +2,10 @@
     padding-top: 2%;
 }
 .tab-content{
-    margin-top: 1%;
+    margin-top: 2%;
+}
+.panel-idcard{
+    height: 320px;
 }
 label{
     display: block;
@@ -12,4 +15,18 @@ label{
 }
 .table{
     margin-top: 1%;
+}
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #2fa4e7;
+}
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #2fa4e7;
 }

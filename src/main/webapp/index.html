@@ -16,14 +16,21 @@
 <body>
 <div class="container">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a href="#recognition-front" data-toggle="tab">Recognition(front)</a></li>
-        <li><a href="#recognition-back" data-toggle="tab">Recognition(back)</a></li>
-        <li><a href="#history-front" data-toggle="tab">History(front)</a></li>
-        <li><a href="#history-back" data-toggle="tab">History(back)</a></li>
+        <li class="active"><a href="#recognition-front" data-toggle="tab">Recognition (front)</a></li>
+        <li><a href="#recognition-back" data-toggle="tab">Recognition (back)</a></li>
+        <li><a href="#history-front" data-toggle="tab" id="a-history-front">History (front)</a></li>
+        <li><a href="#history-back" data-toggle="tab" id="a-history-back">History (back)</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="recognition-front">
-            <row><img src="" class="img-responsive" alt="Responsive image"></row>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">ID CARD (FRONT)</h3>
+                </div>
+                <div class="panel-body panel-idcard">
+                    <img src="" class="img-responsive img-rounded" alt="">
+                </div>
+            </div>
             <table class="table table-hover table-condensed">
                 <tr>
                     <td style="width:30%">NAME</td>
@@ -38,7 +45,14 @@
             <input type="file" accept="image/jpg, image/jpeg" capture="camera" id="recognize-front" >
         </div>
         <div class="tab-pane fade" id="recognition-back">
-            <row><img src="" class="img-responsive" alt="Responsive image"></row>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">ID CARD (BACK)</h3>
+                </div>
+                <div class="panel-body panel-idcard">
+                    <img src="" class="img-responsive img-rounded" alt="">
+                </div>
+            </div>
             <table class="table table-hover table-condensed">
                 <tr>
                     <td style="width:30%">VALID THROUGH</td>
@@ -53,36 +67,44 @@
             <input type="file" accept="image/jpg, image/jpeg" capture="camera" id="recognize-back" >
         </div>
         <div class="tab-pane fade" id="history-front">
-            <table class="table table-striped">
-                <tr>
-                    <td><a>uuuuuuuurl</a></td>
-                    <td>NAME</td>
-                    <td>ID CARD NO.</td>
-                    <td>RECOGNIZED AT</td>
-                </tr>
-                <tr>
-                    <td><a>http://someurl.jpg</a></td>
-                    <td>Somebody Name</td>
-                    <td>432123456789098765</td>
-                    <td>2014/10/4 22:00</td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>URL</th>
+                        <th>NAME</th>
+                        <th>ID CARD NO.</th>
+                        <th>RECOGNIZED AT <button type="button" class="btn btn-default" id="sort-by-time"><div class="arrow-down" id="arrow" style="float: right"></div></button></th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td><a>http://someurl.jpg</a></td>
+                        <td>Somebody Name</td>
+                        <td>432123456789098765</td>
+                        <td>2014/10/4 22:00</td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div class="tab-pane fade" id="history-back">
-            <table class="table table-striped">
-                <tr>
-                    <td><a>uuuuuuuurl</a></td>
-                    <td>NAME</td>
-                    <td>ID CARD NO.</td>
-                    <td>RECOGNIZED AT</td>
-                </tr>
-                <tr>
-                    <td><a>http://someurl.jpg</a></td>
-                    <td>Somebody Name</td>
-                    <td>432123456789098765</td>
-                    <td>2014/10/4 22:00</td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>URL</th>
+                        <th>NAME</th>
+                        <th>ID CARD NO.</th>
+                        <th>RECOGNIZED AT</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td><a>http://someurl.jpg</a></td>
+                        <td>Somebody Name</td>
+                        <td>432123456789098765</td>
+                        <td>2014/10/4 22:00</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>
