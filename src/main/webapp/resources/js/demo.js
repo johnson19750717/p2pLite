@@ -9,12 +9,14 @@
             port: '',
             apiPath: 'api'
         },
+
         state: {
             version: '0.9.2',
             lastModified: 'Oct 9 2014',
             historyUpToDateFront: false,
             historyUpToDateBack: false
         },
+
         model: {
             recognizeIdCard: function(file, side, callback, errorHandler) {
                 var formData = new FormData();
@@ -31,6 +33,7 @@
                     error: errorHandler
                 });
             },
+
             readAsUrl: function(file, callback) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
@@ -39,17 +42,21 @@
                 };
                 reader.readAsDataURL(file);
             },
+
             getHistoryFront: function(callback) {
                 $.get(demo.config.apiPath + '/idcard/front', callback, 'json');
             },
+
             getHistoryBack: function(callback) {
                 $.get(demo.config.apiPath + '/idcard/back', callback, 'json');
             }
         },
+
         view: {
             showUrlImgFront: function(url) {
                 $('#img-front').attr('src', url);
             },
+
             showRecognitionResultFront: function(json) {
                 $('#name').html(json.name);
                 $('#cardNo').html(json.cardNo);
@@ -57,13 +64,16 @@
                 $('#birthday').html(json.birthday);
                 $('#address').html(json.address);
             },
+
             showUrlImgBack: function(url) {
                 $('#img-back').attr('src', url);
             },
+
             showRecognitionResultBack: function(json) {
                 $('#validPeriod').html(json.validPeriod);
                 $('#releasedBy').html(json.issueAuthority);
             },
+
             showHistoryFront: function(json) {
                 var template = '<td class="history-file-front"><a data-toggle="modal" data-target="#img-box-front">IMAGE</a></td>' +
                     '<td class="history-name"></td>' +
@@ -85,6 +95,7 @@
                 }
                 $('#table-history-front').replaceWith(tbody);
             },
+
             showHistoryBack: function(json) {
                 var template = '<td class="history-file-back"><a data-toggle="modal" data-target="#img-box-back">IMAGE</a></td>' +
                     '<td class="history-valid-period"></td>' +
@@ -102,13 +113,16 @@
                 }
                 $('#table-history-back').replaceWith(tbody);
             },
+
             showLoadingImg: function() {
                 $('#loading').show();
             },
+
             hideLoadingImg: function() {
                 $('#loading').hide();
             }
         },
+
         controller: {
             init: function() {
                 var self = this;
@@ -117,6 +131,7 @@
                 $('#a-history-front').on('shown.bs.tab', self.invokeHistoryDisplayFront);
                 $('#a-history-back').on('shown.bs.tab', self.invokeHistoryDisplayBack);
             },
+
             invokeRecognitionFront: function(e) {
                 demo.state.historyUpToDateFront = false;
                 demo.view.showLoadingImg();
@@ -124,10 +139,12 @@
                 demo.model.recognizeIdCard(file, 'front', demo.controller.handleRecognitionResultFront, demo.controller.ajaxErrorHandler);
                 demo.model.readAsUrl(file, demo.view.showUrlImgFront);
             },
+
             handleRecognitionResultFront: function(json) {
                 demo.view.showRecognitionResultFront(json);
                 demo.view.hideLoadingImg();
             },
+
             invokeRecognitionBack: function(e) {
                 demo.state.historyUpToDateBack = false;
                 demo.view.showLoadingImg();
@@ -135,34 +152,41 @@
                 demo.model.recognizeIdCard(file, 'back', demo.controller.handleRecognitionResultBack, demo.controller.ajaxErrorHandler);
                 demo.model.readAsUrl(file, demo.view.showUrlImgBack);
             },
+
             handleRecognitionResultBack: function(json) {
                 demo.view.showRecognitionResultBack(json);
                 demo.view.hideLoadingImg();
             },
+
             ajaxErrorHandler: function(xmlHttpRequest) {
                 demo.view.hideLoadingImg();
                 console.log(xmlHttpRequest);
             },
+
             invokeHistoryDisplayFront: function() {
                 if(!demo.state.historyUpToDateFront) {
                     demo.model.getHistoryFront(demo.controller.handleHistoryDisplayFront);
                     demo.state.historyUpToDateFront = true;
                 }
             },
+
             handleHistoryDisplayFront: function(json) {
                 demo.view.showHistoryFront(json);
                 demo.controller.registerImgModal('front');
             },
+
             invokeHistoryDisplayBack: function() {
                 if(!demo.state.historyUpToDateBack) {
                     demo.model.getHistoryBack(demo.controller.handleHistoryDisplayBack);
                     demo.state.historyUpToDateBack = true;
                 }
             },
+
             handleHistoryDisplayBack: function(json) {
                 demo.view.showHistoryBack(json);
                 demo.controller.registerImgModal('back');
             },
+
             registerImgModal: function(side) {
                 side = side.toLowerCase();
                 var selector = 'a[data-target="#img-box-' + side + '"]',
@@ -172,9 +196,11 @@
                 });
             }
         },
+
         init: function() {
             this.controller.init();
         }
     };
+
     demo.init();
 })();
