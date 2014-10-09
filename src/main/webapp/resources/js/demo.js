@@ -54,8 +54,8 @@
             convertToReadableTime: function(ms) {
                 var date = new Date(parseInt(ms, 10)),
                     year = date.getFullYear(),
-                    month = date.getMonth(),
-                    day = date.getDay(),
+                    month = date.getMonth() + 1,
+                    day = date.getDate(),
                     hours = date.getHours(),
                     minutes = date.getMinutes(),
                     seconds = date.getSeconds();
