@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="zh-cn">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to our OCR DEMO!</title>
+    <title>欢迎来到我们的OCR演示!</title>
     <link href="lib/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="lib/bootstrap-theme-cerulean.min.css" rel="stylesheet">
     <link href="resources/css/demo.css" rel="stylesheet">
@@ -16,16 +16,16 @@
 <body>
 <div class="container">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#recognition-front" data-toggle="tab">Recognition (front)</a></li>
-        <li><a href="#recognition-back" data-toggle="tab">Recognition (back)</a></li>
-        <li><a href="#history-front" data-toggle="tab" id="a-history-front">History (front)</a></li>
-        <li><a href="#history-back" data-toggle="tab" id="a-history-back">History (back)</a></li>
+        <li class="active"><a href="#recognition-front" data-toggle="tab">身份证识别(正面)</a></li>
+        <li><a href="#recognition-back" data-toggle="tab">身份证识别(背面)</a></li>
+        <li><a href="#history-front" data-toggle="tab" id="a-history-front">历史记录(正面)</a></li>
+        <li><a href="#history-back" data-toggle="tab" id="a-history-back">历史记录(背面)</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="recognition-front">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">ID CARD (FRONT)</h3>
+                    <h3 class="panel-title">身份证(正面)</h3>
                 </div>
                 <div class="panel-body panel-idcard">
                     <img src="" class="img-responsive img-rounded" id="img-front" alt="">
@@ -33,33 +33,33 @@
             </div>
             <table class="table table-hover table-condensed table-striped">
                 <tr>
-                    <td style="width:30%">NAME</td>
+                    <td style="width:30%">姓名</td>
                     <td><span class="text-primary" id="name">...</span></td>
                 </tr>
                 <tr>
-                    <td>ID CARD NO.</td>
+                    <td>身份证号码</td>
                     <td><span class="text-primary" id="cardNo">...</span></td>
                 </tr>
                 <tr>
-                    <td>GENDER</td>
+                    <td>性别</td>
                     <td><span class="text-primary" id="gender">...</span></td>
                 </tr>
                 <tr>
-                    <td>BIRTHDAY</td>
+                    <td>生日</td>
                     <td><span class="text-primary" id="birthday">...</span></td>
                 </tr>
                 <tr>
-                    <td>ADDRESS</td>
+                    <td>地址</td>
                     <td><span class="text-primary" id="address">...</span></td>
                 </tr>
             </table>
-            <label for="recognize-front"><a class="btn btn-primary btn-lg btn-block">Recognize</a></label>
+            <label for="recognize-front"><a class="btn btn-primary btn-lg btn-block">开始识别</a></label>
             <input type="file" accept="image/jpg, image/jpeg" capture="camera" id="recognize-front" >
         </div>
         <div class="tab-pane fade" id="recognition-back">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">ID CARD (BACK)</h3>
+                    <h3 class="panel-title">身份证(背面)</h3>
                 </div>
                 <div class="panel-body panel-idcard">
                     <img src="" class="img-responsive img-rounded" id="img-back" alt="">
@@ -67,15 +67,15 @@
             </div>
             <table class="table table-hover table-condensed table-striped">
                 <tr>
-                    <td style="width:30%">VALID PERIOD</td>
+                    <td style="width:30%">有效期限</td>
                     <td><span class="text-primary" id="validPeriod">...</span></td>
                 </tr>
                 <tr>
-                    <td>RELEASED BY</td>
+                    <td>颁发机构</td>
                     <td><span class="text-primary" id="releasedBy">...</span></td>
                 </tr>
             </table>
-            <label for="recognize-back"><a class="btn btn-primary btn-lg btn-block">Recognize</a></label>
+            <label for="recognize-back"><a class="btn btn-primary btn-lg btn-block">开始识别</a></label>
             <input type="file" accept="image/jpg, image/jpeg" capture="camera" id="recognize-back" >
         </div>
         <div class="tab-pane fade" id="history-front">
@@ -83,17 +83,17 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>FILE</th>
-                        <th>NAME</th>
-                        <th>ID CARD NO.</th>
-                        <th>GENDER</th>
-                        <th>ADDRESS</th>
-                        <th>RECOGNIZED AT</th>
+                        <th>文件</th>
+                        <th>姓名</th>
+                        <th>身份证号码</th>
+                        <th>性别</th>
+                        <th>地址</th>
+                        <th>上传时间</th>
                     </tr>
                     </thead>
                     <tbody id="table-history-front">
                     <tr>
-                        <td class="history-file-front"><a data-toggle="modal" data-target="#img-box-front">...</a></td>
+                        <td class="history-file-front"><a data-toggle="modal" data-target="#img-box">...</a></td>
                         <td class="history-name">...</td>
                         <td class="history-cardNo">...</td>
                         <td class="history-gender">...</td>
@@ -105,7 +105,7 @@
             </div>
             <div class="modal fade" id="img-box-front" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content" style="height:320px;">
+                    <div class="modal-content" style="height:400px;">
                         <img src="" class="img-responsive img-rounded" alt="">
                     </div>
                 </div>
@@ -116,10 +116,10 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>FILE</th>
-                        <th>VALID PERIOD</th>
-                        <th>RELEASED BY</th>
-                        <th>RECOGNIZED AT</th>
+                        <th>文件</th>
+                        <th>有效期</th>
+                        <th>颁发机构</th>
+                        <th>上传时间</th>
                     </tr>
                     </thead>
                     <tbody id="table-history-back">
@@ -134,7 +134,7 @@
             </div>
             <div class="modal fade" id="img-box-back" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content" style="height:320px;">
+                    <div class="modal-content" style="height:400px;">
                         <img src="" class="img-responsive img-rounded" alt="">
                     </div>
                 </div>

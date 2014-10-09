@@ -75,7 +75,7 @@
             },
 
             showHistoryFront: function(json) {
-                var template = '<td class="history-file-front"><a data-toggle="modal" data-target="#img-box-front">IMAGE</a></td>' +
+                var template = '<td class="history-file-front"><a data-toggle="modal" data-target="#img-box-front">查看图片</a></td>' +
                     '<td class="history-name"></td>' +
                     '<td class="history-cardNo"></td>' +
                     '<td class="history-gender"></td>' +
