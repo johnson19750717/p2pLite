@@ -35,6 +35,6 @@ label{
     margin: auto;
     vertical-align: middle;
 }
-#img-in-box{
+#img-in-box, .modal-content>img{
     margin: auto;
 }
