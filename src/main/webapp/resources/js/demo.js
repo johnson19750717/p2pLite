@@ -81,7 +81,7 @@
                     '<td class="history-gender"></td>' +
                     '<td class="history-address"></td>' +
                     '<td class="recognized-at-front"></td>',
-                    tbody = $('<tbody></tbody>'),
+                    tbody = $('<tbody></tbody>').attr('id', 'table-history-front'),
                     tr;
                 for(var i = 0, l= json.length; i < l; i++) {
                     tr = $('<tr></tr>').html(template);
@@ -101,7 +101,7 @@
                     '<td class="history-valid-period"></td>' +
                     '<td class="history-released-by"></td>' +
                     '<td class="recognised-at-back"></td>',
-                    tbody = $('<tbody></tbody>'),
+                    tbody = $('<tbody></tbody>').attr('id', 'table-history-back'),
                     tr;
                 for(var i = 0, l= json.length; i < l; i++) {
                     tr = $('<tr></tr>').html(template);
