@@ -42,7 +42,9 @@
             getHistoryFront: function(callback) {
                 $.get(demo.config.apiPath + '/idcard/front', callback, 'json');
             },
-            getHistoryBack: function(callback) {}
+            getHistoryBack: function(callback) {
+                $.get(demo.config.apiPath + '/idcard/back', callback, 'json');
+            }
         },
         view: {
             showUrlImgFront: function(url) {
@@ -81,7 +83,7 @@
                     tr.find('td[class="recognized-at-front"]').html(json[i].uploadDate);
                     tbody.append(tr);
                 }
-                $('table-history-front').replaceWith(tbody);
+                $('#table-history-front').replaceWith(tbody);
             },
             showHistoryBack: function(json) {
                 var template = '<td class="history-file-back"><a data-toggle="modal" data-target="#img-box">IMAGE</a></td>' +
@@ -98,7 +100,7 @@
                     tr.find('td[class="recognized-at-back"]').html(json[i].uploadDate);
                     tbody.append(tr);
                 }
-                $('table-history-back').replaceWith(tbody);
+                $('#table-history-back').replaceWith(tbody);
             },
             showLoadingImg: function() {
                 $('#loading').show();
@@ -119,11 +121,10 @@
                 demo.state.historyUpToDateFront = false;
                 demo.view.showLoadingImg();
                 var file = e.target.files[0];
-                demo.model.recognizeIdCard(file, 'front', this.handleRecognitionResultFront, this.ajaxErrorHandler);
+                demo.model.recognizeIdCard(file, 'front', demo.controller.handleRecognitionResultFront, demo.controller.ajaxErrorHandler);
                 demo.model.readAsUrl(file, demo.view.showUrlImgFront);
             },
             handleRecognitionResultFront: function(json) {
-                json = JSON.parse(json);
                 demo.view.showRecognitionResultFront(json);
                 demo.view.hideLoadingImg();
             },
@@ -131,13 +132,12 @@
                 demo.state.historyUpToDateBack = false;
                 demo.view.showLoadingImg();
                 var file = e.target.files[0];
-                demo.model.recognizeIdCard(file, 'back', this.handleRecognitionResultBack, this.ajaxErrorHandler);
+                demo.model.recognizeIdCard(file, 'back', demo.controller.handleRecognitionResultBack, demo.controller.ajaxErrorHandler);
                 demo.model.readAsUrl(file, demo.view.showUrlImgBack);
             },
             handleRecognitionResultBack: function(json) {
-                json = JSON.parse(json);
                 demo.view.showRecognitionResultBack(json);
-                demo.view.showLoadingImg();
+                demo.view.hideLoadingImg();
             },
             ajaxErrorHandler: function(xmlHttpRequest) {
                 demo.view.hideLoadingImg();
@@ -145,22 +145,20 @@
             },
             invokeHistoryDisplayFront: function() {
                 if(!demo.state.historyUpToDateFront) {
-                    demo.model.getHistoryFront(this.handleHistoryDisplayFront);
+                    demo.model.getHistoryFront(demo.controller.handleHistoryDisplayFront);
                     demo.state.historyUpToDateFront = true;
                 }
             },
             handleHistoryDisplayFront: function(json) {
-                json = JSON.parse(json);
                 demo.view.showHistoryFront(json);
             },
             invokeHistoryDisplayBack: function() {
                 if(!demo.state.historyUpToDateBack) {
-                    demo.model.getHistoryBack(this.handleHistoryDisplayBack);
+                    demo.model.getHistoryBack(demo.controller.handleHistoryDisplayBack);
                     demo.state.historyUpToDateBack = true;
                 }
             },
             handleHistoryDisplayBack: function(json) {
-                json = JSON.parse(json);
                 demo.view.showHistoryBack(json);
             }
         },
