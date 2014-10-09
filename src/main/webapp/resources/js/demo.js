@@ -49,6 +49,17 @@
 
             getHistoryBack: function(callback) {
                 $.get(demo.config.apiPath + '/idcard/back', callback, 'json');
+            },
+
+            convertToReadableTime: function(ms) {
+                var date = new Date(parseInt(ms, 10)),
+                    year = date.getFullYear(),
+                    month = date.getMonth(),
+                    day = date.getDay(),
+                    hours = date.getHours(),
+                    minutes = date.getMinutes(),
+                    seconds = date.getSeconds();
+                return year + '年' + month + '月' + day + '日' + hours + '时' + minutes + '分';
             }
         },
 
@@ -90,14 +101,14 @@
                     tr.find('td[class="history-cardNo"]').html(json[i].cardNo);
                     tr.find('td[class="history-gender"]').html(json[i].sex);
                     tr.find('td[class="history-address"]').html(json[i].address);
-                    tr.find('td[class="recognized-at-front"]').html(json[i].uploadDate);
+                    tr.find('td[class="recognized-at-front"]').html(demo.model.convertToReadableTime(json[i].uploadDate));
                     tbody.append(tr);
                 }
                 $('#table-history-front').replaceWith(tbody);
             },
 
             showHistoryBack: function(json) {
-                var template = '<td class="history-file-back"><a data-toggle="modal" data-target="#img-box-back">IMAGE</a></td>' +
+                var template = '<td class="history-file-back"><a data-toggle="modal" data-target="#img-box-back">查看图片</a></td>' +
                     '<td class="history-valid-period"></td>' +
                     '<td class="history-released-by"></td>' +
                     '<td class="recognised-at-back"></td>',
@@ -108,7 +119,7 @@
                     tr.find('td[class="history-file-back"] a').attr('data-url', demo.config.apiPath + '/resources/idcard/' + json[i].source);
                     tr.find('td[class="history-valid-period"]').html(json[i].validPeriod);
                     tr.find('td[class="history-released-by"]').html(json[i].issueAuthority);
-                    tr.find('td[class="recognized-at-back"]').html(json[i].uploadDate);
+                    tr.find('td[class="recognized-at-back"]').html(demo.model.convertToReadableTime(json[i].uploadDate));
                     tbody.append(tr);
                 }
                 $('#table-history-back').replaceWith(tbody);
