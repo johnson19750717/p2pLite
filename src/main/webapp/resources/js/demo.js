@@ -10,17 +10,17 @@
             apiPath: 'api'
         },
         state: {
-            version: '0.9.1',
+            version: '0.9.2',
             lastModified: 'Oct 9 2014',
             historyUpToDateFront: false,
             historyUpToDateBack: false
         },
         model: {
-            recognizeIdCard: function(file, frontOrBack, callback, errorHandler) {
+            recognizeIdCard: function(file, side, callback, errorHandler) {
                 var formData = new FormData();
                 formData.append("file", file);
                 $.ajax({
-                    url: demo.config.apiPath + '/idcard/' + frontOrBack,
+                    url: demo.config.apiPath + '/idcard/' + side,
                     type: 'POST',
                     data: formData,
                     cache: false,
@@ -65,7 +65,7 @@
                 $('#releasedBy').html(json.issueAuthority);
             },
             showHistoryFront: function(json) {
-                var template = '<td class="history-file-front"><a data-toggle="modal" data-target="#img-box">IMAGE</a></td>' +
+                var template = '<td class="history-file-front"><a data-toggle="modal" data-target="#img-box-front">IMAGE</a></td>' +
                     '<td class="history-name"></td>' +
                     '<td class="history-cardNo"></td>' +
                     '<td class="history-gender"></td>' +
@@ -86,7 +86,7 @@
                 $('#table-history-front').replaceWith(tbody);
             },
             showHistoryBack: function(json) {
-                var template = '<td class="history-file-back"><a data-toggle="modal" data-target="#img-box">IMAGE</a></td>' +
+                var template = '<td class="history-file-back"><a data-toggle="modal" data-target="#img-box-back">IMAGE</a></td>' +
                     '<td class="history-valid-period"></td>' +
                     '<td class="history-released-by"></td>' +
                     '<td class="recognised-at-back"></td>',
@@ -151,6 +151,7 @@
             },
             handleHistoryDisplayFront: function(json) {
                 demo.view.showHistoryFront(json);
+                demo.controller.registerImgModal('front');
             },
             invokeHistoryDisplayBack: function() {
                 if(!demo.state.historyUpToDateBack) {
@@ -160,6 +161,15 @@
             },
             handleHistoryDisplayBack: function(json) {
                 demo.view.showHistoryBack(json);
+                demo.controller.registerImgModal('back');
+            },
+            registerImgModal: function(side) {
+                side = side.toLowerCase();
+                var selector = 'a[data-target="#img-box-' + side + '"]',
+                    img = '#img-box-' + side + ' img';
+                $(selector).on('click', function() {
+                    $(img).attr('src', this.dataset.url);
+                });
             }
         },
         init: function() {
