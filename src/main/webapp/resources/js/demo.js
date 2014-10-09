@@ -105,7 +105,7 @@
                     tr;
                 for(var i = 0, l= json.length; i < l; i++) {
                     tr = $('<tr></tr>').html(template);
-                    tr.find('td[class="history-file-back"] a').attr('data-url', demo.config.apiPath + '/resources/' + json[i].source + '.jpg');
+                    tr.find('td[class="history-file-back"] a').attr('data-url', demo.config.apiPath + '/resources/idcard/' + json[i].source + '.jpg');
                     tr.find('td[class="history-valid-period"]').html(json[i].validPeriod);
                     tr.find('td[class="history-released-by"]').html(json[i].issueAuthority);
                     tr.find('td[class="recognized-at-back"]').html(json[i].uploadDate);
